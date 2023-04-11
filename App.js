@@ -1,20 +1,89 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView, FlatList, TouchableOpacity, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import DetailsScreen from './DetailsScreens';
+import HomeScreen from './HomeScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import FavriteScreen from './FavriteScreen';
+
+import { Provider } from 'react-redux';
+import store from './Store';
+
+
+
+
+
+
+ 
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
+
+
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <>
+
+
+
+
+          <Provider store={store} >
+
+            
+    <NavigationContainer>
+<Stack.Navigator screenOptions={{ headerShown: false }} >
+    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen name="Deatils" component={DetailsScreen} />
+    <Stack.Screen name="Favarite" component={FavriteScreen} />
+
+
+  </Stack.Navigator>
+</NavigationContainer>
+      
+
+          </Provider>
+   
+    
+    
+
+  
+
+
+
+      
       <StatusBar style="auto" />
-    </View>
+    </>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+   
   },
+  searchBarContainer: {
+    marginTop: 50,
+    alignItems: "center"
+  },
+  searchInputs:{
+    height: 40,
+    borderColor: "#f2d9d4",
+     borderWidth: 1,
+     width: "90%",
+     borderRadius: 10,
+  },
+  rexipieContainer:{
+
+  }, 
+  recipiecard:{
+    alignSelf: "center",
+    width: "100%",
+    marginTop: 10,
+    borderRadius: 10,
+
+  }
 });
